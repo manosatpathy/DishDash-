@@ -1,10 +1,11 @@
 import Cards from "./Cards";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [allResData, setAllResData] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
-  
+
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
@@ -29,9 +30,11 @@ const Body = () => {
     }
   };
 
-  return (
+  return allResData.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div id="body">
-      <div id="search">
+      <div className="search">
         <input
           placeholder="search for resturant, food"
           value={inputValue}
@@ -62,7 +65,7 @@ const Body = () => {
           highest Rating
         </button>
       </div>
-      <div id="container">
+      <div className="container">
         {filteredRes.map((res) => (
           <Cards data={res} key={res.id} />
         ))}

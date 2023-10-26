@@ -1,118 +1,165 @@
 body {
-    font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 #header {
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-    background-color: #ed5050;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  background-color: #ed5050;
 }
 
 h1 {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #nav {
-    display: flex;
-    width: 35rem;
-    align-items: center;
+  display: flex;
+  width: 35rem;
+  align-items: center;
 }
 
 ul {
-    display: flex;
-    gap: 5rem;
-    list-style-type: none;
-    
+  display: flex;
+  gap: 5rem;
+  list-style-type: none;
 }
 
-.link{
-    cursor: pointer;
-    text-decoration: none;
-    list-style-type: none;
-    color: white;
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  list-style-type: none;
+  color: white;
 }
 
-#search {
-    padding-left: 3rem;
+.search {
+  padding-left: 3rem;
 }
 
 input {
-    padding-left: 0.5rem;
-    width: 12rem;
-    height: 1.5rem;
-    border-radius: 10px;
+  padding-left: 0.5rem;
+  width: 12rem;
+  height: 1.5rem;
+  border-radius: 10px;
 }
 
 #searchBtn {
-    margin-left: 0.6rem;
-    background-color: palegoldenrod;
-    border-radius: 0.3rem;
-    height: 1.5rem;
-    cursor: pointer;
+  margin-left: 0.6rem;
+  background-color: palegoldenrod;
+  border-radius: 0.3rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
 
 #filter {
-    margin-left: 1rem;
-    background-color: rgba(150, 150, 142, 0.222);
-    border-radius: 0.4rem;
-    cursor: pointer;
+  margin-left: 1rem;
+  background-color: rgba(150, 150, 142, 0.222);
+  border-radius: 0.4rem;
+  cursor: pointer;
 }
 
 #body {
-    padding: 1rem;
+  padding: 1rem;
 }
 
-#container {
-    padding: 1rem 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
+.container {
+  padding: 1rem 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
 }
 
 .cards {
-    height: 19rem;
-    width: 12rem;
-    border-radius: 1rem;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    transition: all 0.3s;
+  height: 19rem;
+  width: 12rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  transition: all 0.3s;
+  background-color: rgba(224, 207, 205, 0.176);
 }
 
 .cards img {
-    border-radius: 1rem;
-    height: 150px;
-    width: 100%;
-    object-fit: cover; 
+  border-radius: 1rem;
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .cards p {
-    font-size: small;
-    overflow: hidden; 
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  font-size: small;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-
 
 .cards:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: scale(0.95);
 }
 
-
-#login{
-   border-radius: 6px;
-   font-style :normal ;
-   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-   background-color: #000000;
-   color: rgb(0, 0, 0);
-   cursor: pointer;
-   width: 4rem;
-   background-color: transparent;
+#login {
+  border-radius: 6px;
+  font-style: normal;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #000000;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  width: 4rem;
+  background-color: transparent;
 }
 
-
-
+.container-shimmer {
+    padding: 4rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+  }
+  
+  .shimmerCard {
+    height: 19rem;
+    width: 12rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background-color: rgba(224, 207, 205, 0.176);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer-image,
+  .shimmer-title,
+  .shimmer-description {
+    height: 30px;
+    width: 100%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    position: relative;
+  }
+  
+  .shimmer-image::before,
+  .shimmer-title::before,
+  .shimmer-description::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 25%, rgba(0, 0, 0, 0.1) 50%, transparent 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    top: 0;
+    left: -100%;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
   
