@@ -1,6 +1,7 @@
 import Cards from "./Cards";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [allResData, setAllResData] = useState([]);
@@ -20,7 +21,7 @@ const Body = () => {
       const data = await response.json();
 
       const allResInfo =
-        data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
 
       setAllResData(allResInfo);
@@ -41,6 +42,14 @@ const Body = () => {
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              const searchedRes = allResData.filter((res) =>
+                res.info.name.toLowerCase().includes(inputValue.toLowerCase())
+              );
+              setFilteredRes(searchedRes);
+            }
+          }}
         />
         <button
           id="searchBtn"
@@ -53,6 +62,7 @@ const Body = () => {
         >
           search
         </button>
+        {/* rating filter section start */}
         <button
           id="filter"
           onClick={() => {
@@ -65,9 +75,12 @@ const Body = () => {
           highest Rating
         </button>
       </div>
+      {/* Cards start */}
       <div className="container">
         {filteredRes.map((res) => (
-          <Cards data={res} key={res.id} />
+          <Link className="link" to={"/restaurant/" + res.info.id } key={res.info.id}>
+            <Cards data={res} />
+          </Link>
         ))}
       </div>
     </div>

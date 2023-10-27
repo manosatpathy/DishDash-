@@ -30,7 +30,7 @@ ul {
   cursor: pointer;
   text-decoration: none;
   list-style-type: none;
-  color: white;
+  color: rgba(0, 0, 0, 0.937);
 }
 
 .search {
@@ -113,53 +113,57 @@ input {
 }
 
 .container-shimmer {
-    padding: 4rem 4rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
+  padding: 4rem 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.shimmerCard {
+  height: 19rem;
+  width: 12rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  background-color: rgba(224, 207, 205, 0.176);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.shimmer-image{
+  height: 150px;
+  width: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  position: relative;
+  border-radius: 1rem;
+}
+
+.shimmer-image::before,
+.shimmer-title::before,
+.shimmer-description::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 25%,
+    rgba(0, 0, 0, 0.1) 50%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  top: 0;
+  left: -100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
   }
-  
-  .shimmerCard {
-    height: 19rem;
-    width: 12rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    background-color: rgba(224, 207, 205, 0.176);
-    position: relative;
-    overflow: hidden;
+  100% {
+    background-position: 200% 0;
   }
-  
-  .shimmer-image,
-  .shimmer-title,
-  .shimmer-description {
-    height: 30px;
-    width: 100%;
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    position: relative;
-  }
-  
-  .shimmer-image::before,
-  .shimmer-title::before,
-  .shimmer-description::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 25%, rgba(0, 0, 0, 0.1) 50%, transparent 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    top: 0;
-    left: -100%;
-  }
-  
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-  
+}
