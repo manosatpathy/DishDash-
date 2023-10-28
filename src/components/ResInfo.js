@@ -19,16 +19,14 @@ const ResInfo = () => {
     setResInfo(data);
   };
 
+  if (resInfo === null) return <Shimmer />;
+
   const { info } = resInfo?.data?.cards[0]?.card?.card || {};
   const { itemCards } =
-    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card || {};
 
-  console.log(itemCards);
-
-  return !info && !itemCards ? (
-    <Shimmer />
-  ) : (
+  return (
     <div className="resInfoContainer">
       <div className="resInfoContainer">
         <div className="resInfo">
@@ -55,7 +53,6 @@ const ResInfo = () => {
       <p>
         ------------------------------------------------------------------------
       </p>
-
       {itemCards.map((menu) => {
         return <MenuCard data={menu} key={menu.card.info.id} />;
       })}

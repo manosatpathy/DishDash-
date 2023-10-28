@@ -21,7 +21,7 @@ const Body = () => {
       const data = await response.json();
 
       const allResInfo =
-        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
 
       setAllResData(allResInfo);
@@ -78,7 +78,11 @@ const Body = () => {
       {/* Cards start */}
       <div className="container">
         {filteredRes.map((res) => (
-          <Link className="link" to={"/restaurant/" + res.info.id } key={res.info.id}>
+          <Link
+            className="link"
+            to={"/restaurant/" + res.info.id}
+            key={res.info.id}
+          >
             <Cards data={res} />
           </Link>
         ))}
