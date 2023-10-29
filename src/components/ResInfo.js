@@ -23,39 +23,39 @@ const ResInfo = () => {
 
   const { info } = resInfo?.data?.cards[0]?.card?.card || {};
   const { itemCards } =
-    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card || {};
 
   return (
-    <div className="resInfoContainer">
-      <div className="resInfoContainer">
-        <div className="resInfo">
-          <h2>{info.name}</h2>
-          <p>{info.cuisines.join(", ")}</p>
-          <p>
-            {info.areaName}, {info.sla.lastMileTravel + " km"}
-          </p>
-          <p>{info.feeDetails.message}</p>
+    <div className="resInfoMainContainer">
+      <div className="resInfoChildContainer">
+        <div className="resInfoHeadContainer">
+          <div className="resInfo">
+            <h2>{info.name}</h2>
+            <div className="middle">
+              <p>{info.cuisines.join(", ")}</p>
+              <p>
+                {info.areaName}, {info.sla.lastMileTravel + " km"}
+              </p>
+            </div>
+            <p>{info.feeDetails.message}</p>
+          </div>
+          <div className="resRating">
+            <h3 className="rateStar"> &#9733; {info.avgRating}</h3>
+            <p>------------</p>
+            <p>{info.totalRatingsString}</p>
+          </div>
         </div>
-        <div className="resRating">
-          <h3> &#9733; {info.avgRating}</h3>
-          <p>----------------</p>
-          <p>{info.totalRatingsString}</p>
+        <hr />
+        <div className="time-cost">
+          <h3>{info.sla.deliveryTime + " MINS"}</h3>
+          <h3>{info.costForTwoMessage}</h3>
         </div>
+        <hr />
+        {itemCards.map((menu) => {
+          return <MenuCard data={menu} key={menu.card.info.id} />;
+        })}
       </div>
-      <p>
-        ------------------------------------------------------------------------
-      </p>
-      <div className="time-cost">
-        <h2>{info.sla.deliveryTime + " MINS"}</h2>
-        <h2>{info.costForTwoMessage}</h2>
-      </div>
-      <p>
-        ------------------------------------------------------------------------
-      </p>
-      {itemCards.map((menu) => {
-        return <MenuCard data={menu} key={menu.card.info.id} />;
-      })}
     </div>
   );
 };

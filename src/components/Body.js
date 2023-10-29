@@ -19,11 +19,9 @@ const Body = () => {
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.3197612&lng=85.8539644&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const data = await response.json();
-
       const allResInfo =
-        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-
       setAllResData(allResInfo);
       setFilteredRes(allResInfo);
     } catch (error) {
@@ -62,7 +60,6 @@ const Body = () => {
         >
           search
         </button>
-        {/* rating filter section start */}
         <button
           id="filter"
           onClick={() => {
@@ -75,7 +72,6 @@ const Body = () => {
           highest Rating
         </button>
       </div>
-      {/* Cards start */}
       <div className="container">
         {filteredRes.map((res) => (
           <Link
