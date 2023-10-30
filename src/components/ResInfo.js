@@ -25,7 +25,7 @@ const ResInfo = () => {
   const { itemCards } =
     resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card || {};
-
+  
   return (
     <div className="resInfoMainContainer">
       <div className="resInfoChildContainer">
@@ -52,9 +52,14 @@ const ResInfo = () => {
           <h3>{info.costForTwoMessage}</h3>
         </div>
         <hr />
-        {itemCards.map((menu) => {
-          return <MenuCard data={menu} key={menu.card.info.id} />;
-        })}
+
+        {itemCards ? (
+          itemCards.map((menu) => (
+            <MenuCard data={menu} key={menu.card.info.id} />
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
     </div>
   );
