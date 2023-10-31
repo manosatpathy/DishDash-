@@ -238,3 +238,11 @@ h5 {
 .msg {
   margin-top: 0.5rem;
 }
+.offerCards{
+  border: 1px solid black;
+  border-radius: 1rem;
+  text-align: center;
+  width: 20rem;
+  margin-top: 1rem;
+  background-color: #f6cccc;
+}

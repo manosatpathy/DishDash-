@@ -58,7 +58,7 @@ const ResInfo = () => {
             <MenuCard data={menu} key={menu.card.info.id} />
           ))
         ) : (
-          <div>Loading...</div>
+          <div>Menu not available for this resturant</div>
         )}
       </div>
     </div>

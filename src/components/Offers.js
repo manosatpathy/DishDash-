@@ -1,7 +1,14 @@
+import OfferCard from "./OfferCard";
+
+
 const Offers = () => {
   return <div>
-    <h1> 50% off is running </h1>
-    <h1> HURRY UP </h1>
+    <OfferCard name="Big Diwali Sale" price="4000"  offerPrice="1200"/>
+    <OfferCard name="Big Diwali Sale" price="4000"  offerPrice="1200"/>
+    <OfferCard name="Big Diwali Sale" price="4000"  offerPrice="1200"/>
+    <OfferCard name="Big Diwali Sale" price="4000"  offerPrice="1200"/>
+    <OfferCard name="Big Diwali Sale" price="4000"  offerPrice="1200"/>
+    <OfferCard name="Big Diwali Sale" price="4000"  offerPrice="1200"/>
   </div>;
 };
 
