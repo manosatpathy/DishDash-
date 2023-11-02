@@ -19,7 +19,7 @@ const Body = () => {
       const response = await fetch(resListApi);
       const data = await response.json();
       const allResInfo =
-        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
       setAllResData(allResInfo);
       setFilteredRes(allResInfo);
