@@ -2,6 +2,7 @@ import Cards from "./Cards";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { resListApi } from "../utils/constants";
 
 const Body = () => {
   const [allResData, setAllResData] = useState([]);
@@ -15,9 +16,7 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.3197612&lng=85.8539644&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const response = await fetch(resListApi);
       const data = await response.json();
       const allResInfo =
         data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle

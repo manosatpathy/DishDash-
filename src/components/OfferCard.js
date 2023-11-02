@@ -8,9 +8,8 @@ class OfferCard extends React.Component{
         this.state={
             name: "manoranjan"
         }
-
-
     }
+
     render(){
         return(
             <div className="offerCards">

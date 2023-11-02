@@ -1,4 +1,4 @@
-import { imgLink } from "./config";
+import { imgLink } from "../utils/constants";
 
 const Cards = (props) => {
   return (

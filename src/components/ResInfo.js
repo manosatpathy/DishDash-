@@ -1,31 +1,22 @@
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuCard";
-import { resMenuApi } from "./config";
-import { useState, useEffect } from "react";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 
 const ResInfo = () => {
   const { resId } = useParams();
 
-  const [resInfo, setResInfo] = useState(null);
+  const resInfo = useRestaurantMenu(resId);
 
-  useEffect(() => {
-    fetchResMenu();
-  }, []);
-
-  const fetchResMenu = async () => {
-    const response = await fetch(resMenuApi + resId);
-    const data = await response.json();
-    setResInfo(data);
-  };
+  console.log(resInfo)
 
   if (resInfo === null) return <Shimmer />;
 
   const { info } = resInfo?.data?.cards[0]?.card?.card || {};
   const { itemCards } =
-    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card || {};
-  
+
   return (
     <div className="resInfoMainContainer">
       <div className="resInfoChildContainer">
