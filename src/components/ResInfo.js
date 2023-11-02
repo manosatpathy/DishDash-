@@ -8,13 +8,11 @@ const ResInfo = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  console.log(resInfo)
-
   if (resInfo === null) return <Shimmer />;
 
   const { info } = resInfo?.data?.cards[0]?.card?.card || {};
   const { itemCards } =
-    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card || {};
 
   return (
