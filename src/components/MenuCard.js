@@ -1,7 +1,7 @@
 const MenuCard = (props) => {
   return (
-    <div className="cardBox">
-      <div className="menuCard">
+    <div className="">
+      <div className="">
         <div className="menuCardInfo">
           {props.data.card.info.ribbon.text ? (
             <h5> &#9733; {props.data.card.info.ribbon.text} </h5>

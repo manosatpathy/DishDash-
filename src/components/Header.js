@@ -7,7 +7,7 @@ const Header = () => {
   const [logBtn, setLogBtn] = useState("Login");
 
   return (
-    <div className="flex justify-between border h-28 m-3 item-center shadow-lg ">
+    <div className="flex justify-between border h-28 m-3 item-center shadow-lg bg-pink-50 ">
       <div className=" flex items-center">
         <h1 className="pl-6 font-mono text-4xl">
           <Link className="link" to="/">
