@@ -1,9 +1,9 @@
 import Cards, { labeledCard } from "./Cards";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { resListApi } from "../utils/constants";
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
+import UserContext from "../utils/Usercontext";
 
 const Body = () => {
   const [allResData, setAllResData] = useState([]);
@@ -11,23 +11,20 @@ const Body = () => {
 
   const [inputValue, setInputValue] = useState("");
   const ResPromotedCard = labeledCard(Cards);
-  console.log(filteredRes);
 
+  const { setUserName } = useContext(UserContext);
   useEffect(() => {
     fetchData();
   }, []);
-
   const fetchData = async () => {
     try {
       const response = await fetch(resListApi);
       const data = await response.json();
-      // console.log(data.data);
-      const allResInfo = data?.data?.cards[5]?.card?.card?.gridElements
-        ?.infoWithStyle?.restaurants
-        // ? data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-        //     ?.restaurants
-        // : undefined;
-      // console.log(data.data);
+      const allResInfo =
+        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+        data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
       setAllResData(allResInfo);
       setFilteredRes(allResInfo);
     } catch (error) {
@@ -38,10 +35,10 @@ const Body = () => {
   return allResData.length === 0 ? (
     <Shimmer />
   ) : (
-    <div id="body">
+    <div>
       <div className="flex gap-5 mx-20 my-5">
         <input
-          className="w-96 h-8 font-medium shadow-md rounded-sm bg-cyan-50"
+          className="w-96 h-8 font-medium shadow-md rounded-sm bg-cyan-50 pl-2 outline-none"
           placeholder="search for resturant, food"
           value={inputValue}
           onChange={(e) => {
@@ -78,6 +75,12 @@ const Body = () => {
         >
           Highest Rating
         </button>
+        <input
+          className="w-96 h-8 font-medium shadow-md rounded-sm bg-cyan-50 pl-2 outline-none"
+          placeholder="change context here"
+          type="text"
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
       <div className="flex flex-wrap mx-12">
         {filteredRes.map((res) => (

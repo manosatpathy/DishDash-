@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/Usercontext";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
   const [logBtn, setLogBtn] = useState("Login");
+  const { userName } = useContext(UserContext);
 
   return (
     <div className="flex justify-between border h-28 m-3 item-center shadow-lg bg-pink-50 ">
@@ -43,6 +45,7 @@ const Header = () => {
             Cart{" "}
           </Link>
         </li>
+        <li className="px-7"> {userName}</li>
         <li className="px-7">
           <button
             id="login"

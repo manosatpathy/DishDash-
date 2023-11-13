@@ -2,7 +2,7 @@ import { imgLink } from "../utils/constants";
 
 const Cards = (props) => {
   return (
-    <div className="flex flex-col border w-60 h-[340px] m-4 p-4 rounded-2xl hover:bg-green-50 ">
+    <div className="flex flex-col border w-60 h-[340px] m-4 p-4 rounded-2xl hover:bg-green-50 border-t-2">
       <img
         className=" w-48 h-36 rounded-xl"
         src={imgLink + props.data.info.cloudinaryImageId}

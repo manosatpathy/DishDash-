@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDom from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,14 +7,19 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Help from "./components/Help";
 import Error from "./components/Error";
 import ResInfo from "./components/ResInfo";
+import UserContext from "./utils/Usercontext";
 
 const Offers = lazy(() => import("./components/Offers"));
 
 const App = () => {
+  const [userName, setUserName] = useState("manoranjan");
+
   return (
     <div>
-      <Header />
-      <Outlet />
+      <UserContext.Provider value={{ userName: userName , setUserName}}>
+        <Header />
+        <Outlet />
+      </UserContext.Provider>
     </div>
   );
 };
