@@ -8,6 +8,8 @@ import Help from "./components/Help";
 import Error from "./components/Error";
 import ResInfo from "./components/ResInfo";
 import UserContext from "./utils/Usercontext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const Offers = lazy(() => import("./components/Offers"));
 
@@ -15,12 +17,14 @@ const App = () => {
   const [userName, setUserName] = useState("manoranjan");
 
   return (
-    <div>
-      <UserContext.Provider value={{ userName: userName , setUserName}}>
-        <Header />
-        <Outlet />
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ userName: userName, setUserName }}>
+        <div>
+          <Header />
+          <Outlet />
+        </div>
       </UserContext.Provider>
-    </div>
+    </Provider>
   );
 };
 

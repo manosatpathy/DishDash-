@@ -21,9 +21,9 @@ const Body = () => {
       const response = await fetch(resListApi);
       const data = await response.json();
       const allResInfo =
-        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants ||
-        data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
       setAllResData(allResInfo);
       setFilteredRes(allResInfo);
@@ -31,7 +31,7 @@ const Body = () => {
       console.error("Error fetching Data", error);
     }
   };
-
+  console.log(filteredRes)
   return allResData.length === 0 ? (
     <Shimmer />
   ) : (
@@ -89,11 +89,11 @@ const Body = () => {
             to={"/restaurant/" + res.info.id}
             key={res.info.id}
           >
-            {res.info.aggregatedDiscountInfoV3.header === "₹150 OFF" ? (
+            {/* {res.info.aggregatedDiscountInfoV3.header === "₹125 OFF"? (
               <ResPromotedCard data={res} />
-            ) : (
+            ) : ( */}
               <Cards data={res} />
-            )}
+            {/* )} */}
           </Link>
         ))}
       </div>

@@ -18,6 +18,7 @@ const ResInfo = () => {
       ?.card ||
     {};
     console.log(resInfo)
+    
 
   // const {cate}
 
@@ -49,7 +50,7 @@ const ResInfo = () => {
 
         {itemCards ? (
           itemCards.map((menu) => (
-            <MenuCard data={menu} key={menu.card.info.id} />
+            <MenuCard className="p-7" data={menu} key={menu.card.info.id} />
           ))
         ) : (
           <div>Menu not available for this resturant</div>
